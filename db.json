@@ -1,0 +1,94 @@
+{
+  "contacts": [
+      {
+        "name": "John Doe",
+        "phone": 1234567890,
+        "email": "johndoe@example.com",
+        "company": "ABC Corp",
+        "role": "Software Engineer",
+        "sector": "Services",
+        "city": "New York"
+      },
+      {
+        "name": "Jane Smith",
+        "phone": 9876543210,
+        "email": "janesmith@example.com",
+        "company": "XYZ Inc",
+        "role": "Data Analyst",
+        "sector": "Health",
+        "city": "Los Angeles"
+      },
+      {
+        "name": "Michael Johnson",
+        "phone": 2468135790,
+        "email": "michaeljohnson@example.com",
+        "company": "123 Co",
+        "role": "Sales Manager",
+        "sector": "Education",
+        "city": "Chicago"
+      },
+      {
+        "name": "Emily Davis",
+        "phone": 1357924680,
+        "email": "emilydavis@example.com",
+        "company": "456 Ltd",
+        "role": "HR Coordinator",
+        "sector": "Fairness",
+        "city": "Houston"
+      },
+      {
+        "name": "David Wilson",
+        "phone": 3698521470,
+        "email": "davidwilson@example.com",
+        "company": "789 LLC",
+        "role": "Marketing Specialist",
+        "sector": "Services",
+        "city": "Phoenix"
+      },
+      {
+        "name": "Sarah Anderson",
+        "phone": 2587413690,
+        "email": "sarahanderson@example.com",
+        "company": "DEF Corp",
+        "role": "Product Manager",
+        "sector": "Health",
+        "city": "Philadelphia"
+      },
+      {
+        "name": "Robert Martinez",
+        "phone": 7418529630,
+        "email": "robertmartinez@example.com",
+        "company": "ABC Corp",
+        "role": "Software Engineer",
+        "sector": "Education",
+        "city": "San Antonio"
+      },
+      {
+        "name": "Jennifer Thompson",
+        "phone": 9517538640,
+        "email": "jenniferthompson@example.com",
+        "company": "GHI Inc",
+        "role": "Data Analyst",
+        "sector": "Fairness",
+        "city": "San Diego"
+      },
+      {
+        "name": "Christopher Taylor",
+        "phone": 7894561230,
+        "email": "christophertaylor@example.com",
+        "company": "JKL Co",
+        "role": "Sales Manager",
+        "sector": "Services",
+        "city": "Dallas"
+      },
+      {
+        "name": "Jessica Clark",
+        "phone": 3698527410,
+        "email": "jessicaclark@example.com",
+        "company": "MNO Ltd",
+        "role": "HR Coordinator",
+        "sector": "Health",
+        "city": "Austin"
+      }
+  ]
+}

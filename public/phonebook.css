@@ -11,7 +11,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p,
+figure {
   margin: 0;
 }
 
@@ -85,20 +87,76 @@ h6 {
   border: none;
 }
 
-.app-header-btn:hover{
-    background-color: #463e02;
-    transition: 0.3s linear;
+.app-header-btn:hover {
+  background-color: #463e02;
+  transition: 0.3s linear;
 }
 .app-header-btn svg {
   fill: #463e02;
   background-blend-mode: multiply;
 }
 .app-header-btn svg:hover {
-    fill: #f5e149;
-    background-blend-mode: multiply;
+  fill: #f5e149;
+  background-blend-mode: multiply;
 
-    transition: 0.3s linear;
-  }
+  transition: 0.3s linear;
+}
+
+/*Contact */
+
+.contact {
+  padding: 12px 0px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.contact-name {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+
+  color: #463e02;
+}
+.contact-role {
+  text-align: left;
+
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+
+  color: #463e02;
+}
+.contact-icon img{
+  width: 40px;
+}
+.contact-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+  gap: 24px;
+}
+.border-div {
+  padding: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+
+  border-bottom: 1px dotted #463e02;
+}
+/*End Contact*/
 
 /*Footer*/
 
