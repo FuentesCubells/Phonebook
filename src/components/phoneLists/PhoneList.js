@@ -70,19 +70,23 @@ const PhoneList = ({ persons }) => {
       />
     </svg>
   );
-
+  
   const updatedPersons = persons.map((person) => {
-    switch (person.sector.toUpperCase()) {
-      case "SERVICES":
-        return { ...person, icon: services, alt: "services icon" };
-      case "EDUCATION":
-        return { ...person, icon: education, alt: "education icon" };
-      case "HEALTH":
-        return { ...person, icon: health, alt: "health icon" };
-      case "FAIRNESS":
-        return { ...person, icon: fairness, alt: "fairness icon" };
-      default:
-        return person;
+    if(person.sector !== undefined) {
+      switch (person.sector.toUpperCase()) {
+        case "SERVICES":
+          return { ...person, icon: services, alt: "services icon" };
+        case "EDUCATION":
+          return { ...person, icon: education, alt: "education icon" };
+        case "HEALTH":
+          return { ...person, icon: health, alt: "health icon" };
+        case "FAIRNESS":
+          return { ...person, icon: fairness, alt: "fairness icon" };
+        default:
+          return person;
+      }
+    }else {
+      return person;
     }
   });
 
@@ -93,7 +97,7 @@ const PhoneList = ({ persons }) => {
           <h2 className="contact-name">{person.name}</h2>
           <p className="contact-role">{person.role}</p>
         </section>
-        <figure className="contact-icon">{person.icon}</figure>
+        <figure className="list-icon">{person.icon}</figure>
       </header>
       <section className="contact-details">
         <address className="contact-address">{person.city}</address>

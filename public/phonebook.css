@@ -101,6 +101,25 @@ figure {
 
   transition: 0.3s linear;
 }
+.app-header-btn svg:hover > path {
+  fill: #f5e149;
+  background-blend-mode: multiply;
+
+  transition: 0.3s linear;
+}
+.list-icon {
+
+    padding: 12px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.list-icon {
+  width: 40px;
+}
 
 /*Contact */
 
@@ -135,8 +154,45 @@ figure {
 
   color: #463e02;
 }
-.contact-icon img{
+.contact-icon {
+  padding: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-icon img {
   width: 40px;
+}
+.contact-icon:hover {
+  padding: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #463e02;
+}
+.contact-icon:hover > svg g path{
+  fill: #F5E149;
+}
+.contact-icon:hover > svg path{
+  fill: #F5E149;
+}
+.contact-icon-selected{
+  padding: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #463e02;
+}
+.contact-icon-selected svg g path{
+  fill: #F5E149;
+}
+.contact-icon-selected svg path{
+  fill: #F5E149;
 }
 .contact-details {
   display: flex;
@@ -157,6 +213,97 @@ figure {
   border-bottom: 1px dotted #463e02;
 }
 /*End Contact*/
+
+/*Add-Forms*/
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  align-self: stretch;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+}
+.form-label {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0%; /* 0px */
+}
+.form-input {
+  padding: 12px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid #5c5838;
+}
+
+.form-input:focus {
+  background-color: #dbc200;
+  outline: none;
+}
+.form-submit {
+  padding: 12px 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  align-self: stretch;
+
+  border-radius: 12px;
+  background: #463E02;
+}
+.form-icons{
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+input::file-selector-button {
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+}
+.submit-button {
+
+  color: #F5E149;
+  font-size: 20px;
+  font-weight: 700;
+
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.error-message {
+  padding: 12px 0px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+
+  border-bottom: 1px solid #F54949;
+}
+.error-message p {
+  color: #F54949;
+
+  font-size: 16px;
+  font-style: bold;
+  font-weight: 700;
+  line-height: 0%; /* 0px */
+}
 
 /*Footer*/
 
