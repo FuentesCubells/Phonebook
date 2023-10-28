@@ -108,13 +108,11 @@ figure {
   transition: 0.3s linear;
 }
 .list-icon {
+  padding: 12px;
 
-    padding: 12px;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .list-icon {
@@ -173,13 +171,13 @@ figure {
 
   background-color: #463e02;
 }
-.contact-icon:hover > svg g path{
-  fill: #F5E149;
+.contact-icon:hover > svg g path {
+  fill: #f5e149;
 }
-.contact-icon:hover > svg path{
-  fill: #F5E149;
+.contact-icon:hover > svg path {
+  fill: #f5e149;
 }
-.contact-icon-selected{
+.contact-icon-selected {
   padding: 12px;
 
   display: flex;
@@ -188,11 +186,11 @@ figure {
 
   background-color: #463e02;
 }
-.contact-icon-selected svg g path{
-  fill: #F5E149;
+.contact-icon-selected svg g path {
+  fill: #f5e149;
 }
-.contact-icon-selected svg path{
-  fill: #F5E149;
+.contact-icon-selected svg path {
+  fill: #f5e149;
 }
 .contact-details {
   display: flex;
@@ -262,9 +260,9 @@ figure {
   align-self: stretch;
 
   border-radius: 12px;
-  background: #463E02;
+  background: #463e02;
 }
-.form-icons{
+.form-icons {
   width: 100%;
 
   display: flex;
@@ -277,8 +275,7 @@ input::file-selector-button {
   border: none;
 }
 .submit-button {
-
-  color: #F5E149;
+  color: #f5e149;
   font-size: 20px;
   font-weight: 700;
 
@@ -294,10 +291,10 @@ input::file-selector-button {
   gap: 10px;
   align-self: stretch;
 
-  border-bottom: 1px solid #F54949;
+  border-bottom: 1px solid #f54949;
 }
 .error-message p {
-  color: #F54949;
+  color: #f54949;
 
   font-size: 16px;
   font-style: bold;
@@ -305,6 +302,154 @@ input::file-selector-button {
   line-height: 0%; /* 0px */
 }
 
+/*Edit-form */
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  align-self: stretch;
+}
+.edit-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.edit-action {
+  height: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: transparent;
+  border: none;
+
+  color: #5c5100;
+  font-family: Roboto Slab;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0%; /* 0px */
+}
+.edit-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.content-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+}
+.content-title img {
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background-color: #5c5100;
+}
+.content-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.content-name h2 {
+  color: #463e02;
+
+  font-family: Roboto Slab;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+}
+.content-name h3 {
+  height: 30px;
+  color: #463e02;
+
+  font-family: Roboto Slab;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+.content-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.contact-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  align-self: stretch;
+}
+.contact-info p {
+  color: #463e02;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+}
+.contact-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.contact-notes p {
+  height: 12px;
+
+  color: #463e02;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+}
+.input-notes {
+  height: 109px;
+  padding: 24px 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  align-self: stretch;
+
+  border: none;
+  border-radius: 12px;
+  background: #dbc200;
+  outline: none;
+}
+.editing-input {
+  width: 77px;
+  padding: 8px 12px;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.editing-input:focus {
+  border: none;
+  outline: none;
+
+  background: #dbc200;
+}
 /*Footer*/
 
 .footer-container {

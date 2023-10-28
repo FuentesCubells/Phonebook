@@ -94,7 +94,9 @@ const PhoneList = ({ persons }) => {
     <article className="contact" key={person.name}>
       <header className="contact-header">
         <section className="contact-title">
-          <h2 className="contact-name">{person.name}</h2>
+          <a href={`/edit`}>
+            <h2 className="contact-name">{person.name}</h2>
+          </a>
           <p className="contact-role">{person.role}</p>
         </section>
         <figure className="list-icon">{person.icon}</figure>

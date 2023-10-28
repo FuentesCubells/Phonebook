@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,  useParams  } from "react-router-dom";
 
 import AppHeader from "./AppHeader/AppHeader";
 import PhoneList from "./phoneLists/PhoneList";
 
 import Add from "./forms/Add";
-
+import Edit from "./forms/Edit";
 
 import Services from "../services/phoneServices";
 
 const Content = ({ text }) => {
+  const {name} = useParams();
+  
   const [persons, setPersons] = useState([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
-  
 
   useEffect(() => {
     Services.get().then((returnedObjects) => {
@@ -24,15 +25,17 @@ const Content = ({ text }) => {
 
   return (
     <>
-      <AppHeader text={text}/>
+      <AppHeader text={text} />
       {location.pathname === "/" ? (
-            loading ? (
-            <p>Loading...</p>
-            ) : (
-            <PhoneList persons={persons} />
-            )
+        loading ? (
+          <p>Loading...</p>
         ) : (
-            <Add Services={Services}/>
+          <PhoneList persons={persons} />
+        )
+      ) : location.pathname === `/edit` ? (
+        <Edit Services={Services} />
+      ) : (
+        <Add Services={Services} />
       )}
     </>
   );

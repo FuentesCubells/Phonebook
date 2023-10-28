@@ -14,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Content text={'List'}/>}/>
           <Route path='/add-contact' element={<Content text={'New Contact'}/>}/>
+          <Route path='/edit' element={<><Content text={'Edit'}/></>}/>
         </Routes>
       </Router>
       <Footer />
