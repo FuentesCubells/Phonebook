@@ -51,7 +51,6 @@ const AppHeader = ({ text }) => {
                 {closeIcon}
             </a>
         }
-       
       </button>
     </div>
   );

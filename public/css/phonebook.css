@@ -302,7 +302,7 @@ input::file-selector-button {
   line-height: 0%; /* 0px */
 }
 
-/*Edit-form */
+/*Detail-form */
 .edit-container {
   display: flex;
   flex-direction: column;
@@ -367,7 +367,7 @@ input::file-selector-button {
   color: #463e02;
 
   font-family: Roboto Slab;
-  font-size: 32px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 400;
 }
@@ -376,7 +376,7 @@ input::file-selector-button {
   color: #463e02;
 
   font-family: Roboto Slab;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
 }
@@ -449,6 +449,17 @@ input::file-selector-button {
   outline: none;
 
   background: #dbc200;
+}
+.content-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1px;
+  align-self: stretch;}
+.icon{
+  display: flex;
+  justify-content: flex-end;
 }
 /*Footer*/
 
