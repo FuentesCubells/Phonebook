@@ -1,17 +1,32 @@
 import React , { useState, useEffect }from "react";
 import { useParams } from 'react-router-dom';
 
-const DetailView = ({persons}) => {
+const DetailView = ({ Services,  persons}) => {
   const { name } = useParams();
   const [loading, setLoading] = useState(true);
 
+ 
   useEffect(() => {
     if (persons.length > 0) {
       setLoading(false);
     }
+   
   }, [persons]);
 
   const person = persons.filter(obj => Object.values(obj).includes(name));
+  console.log(person[0].image)
+
+  const handleDelete = async () => {
+    try {
+      const deleteData = new FormData();
+      deleteData.append('name', name);
+
+      let response = await Services.deleteContact(name, deleteData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   if (loading) {
     return <p>Loading...</p>; // Or any loading component
@@ -20,13 +35,13 @@ const DetailView = ({persons}) => {
   return (
     <div className="edit-container">
       <div className="edit-actions">
-        <button className="edit-action">Edit</button>
-        <button className="edit-action">Erase</button>
+        <button className="edit-action"><a href={`/edit-contact/${person[0].name}`}>Edit</a></button>
+        <button className="edit-action"><a href={`#`} onClick={handleDelete}>Erase</a></button>
       </div>
       
       <div className="edit-content">
         <div className="content-title">
-          <img></img>
+          <img alt="portrait" src={person[0].image}/>
           <div className="content-info">
             <div className="icon">
               {person[0].icon}

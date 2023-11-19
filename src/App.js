@@ -12,8 +12,10 @@ import DetailView from "./components/detailview/DetailView";
 import Services from "./services/phoneServices";
 
 const App = () => {
-
+  
   const [persons, setPersons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [reloadUsers, setReloadUsers] = useState(false);
 
   const services = (
     <svg
@@ -83,6 +85,13 @@ const App = () => {
       />
     </svg>
   );
+  
+
+  useEffect(() => {
+    if (persons.length > 0) {
+      setLoading(false);
+    }
+  }, [persons]);
 
   useEffect(() => {
     Services.get().then((returnedObjects) => {
@@ -105,11 +114,17 @@ const App = () => {
         }
       });
       setPersons(updatedPersons);
+      setLoading(false);
+      setReloadUsers(false)
+    }).catch((error) => {
+      console.error('Error fetching data:', error);
+      setLoading(false); // Ensure loading state is set to false on error as well
     });
-  }, []);
-  
+  }, [reloadUsers]);
 
-  
+  if (loading) {
+    return <p>Loading...</p>; // Or any loading component
+  }
 
   return (
     <div className='screen'>
@@ -125,13 +140,19 @@ const App = () => {
           <Route path='/add-contact' element={
             <>
               <AppHeader text={'Add'}/>
-              <Add/>
+              <Add Services={Services} setReloadUsers={setReloadUsers}persons={persons}/>
             </>
           }/>
           <Route path='/detail/:name' element={
             <>
               <AppHeader text={'Detail View'}/>
-              <DetailView persons={persons}/>
+              <DetailView Services={Services} persons={persons}/>
+            </>
+          }/>
+          <Route path='/edit-contact/:nameParam' element={
+            <>
+              <AppHeader text={'Edit'}/>
+              <Add Services={Services} setReloadUsers={setReloadUsers} persons={persons}/>
             </>
           }/>
         </Routes>

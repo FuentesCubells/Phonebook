@@ -1,9 +1,9 @@
 import React from "react";
 
-const PhoneList = ({ persons }) => {
-
+const PhoneList = ( {persons} ) => {
+  
   return persons.map((person) => (
-    <article className="contact" key={person.name}>
+    <article className="contact" key={person.name} id={person.name}>
       <header className="contact-header">
         <section className="contact-title">
           <a href={`/detail/${person.name}`}>

@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useParams,  useNavigate } from 'react-router-dom';
 
-const Add = ({ Services }) => {
+const Add = ({ Services, persons, setReloadUsers }) => {
+  const navigate =  useNavigate();
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [role, setRole] = useState("");
-  const [sector, setSector] = useState("");
-  const [city, setCity] = useState("");
+  const { nameParam } = useParams();
+  const person = persons.filter(obj => Object.values(obj).includes(nameParam));
+
+  const [name, setName] = useState(person.length > 0 ? (person[0].name ? person[0].name : "") : "");
+  const [phone, setPhone] = useState(person.length > 0 ? (person[0].phone ? person[0].phone : "") : "");
+  const [email, setEmail] = useState(person.length > 0 ? (person[0].email ? person[0].email : "") : "");
+  const [company, setCompany] = useState(person.length > 0 ? (person[0].company ? person[0].company : "") : "");
+  const [role, setRole] = useState(person.length > 0 ? (person[0].role ? person[0].role : "") : "");
+  const [sector, setSector] = useState(person.length > 0 ? (person[0].sector ? person[0].sector : "") : "");
+  const [city, setCity] = useState(person.length > 0 ? (person[0].city ? person[0].city : "") : "");
   const [photo, setPhoto] = useState(null);
 
   const [selected, setSelected] = useState(null);
@@ -19,7 +24,7 @@ const Add = ({ Services }) => {
     email: null,
     photo: null,
   });
-
+  
   const services = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -143,28 +148,39 @@ const Add = ({ Services }) => {
     formData.append("role", role);
     formData.append("sector", sector);
     formData.append("city", city);
+
     if (photo) {
-      console.log(photo);
       formData.append("image", photo);
+      console.log(photo);
     }
 
     try {
-      const response = await Services.add(formData);
+      let response;
+
+      if (!nameParam) {
+        response = await Services.add(formData);
+        setReloadUsers(true);
+        navigate(`/#${name}`);
+      } else {
+        response = await Services.edit(formData, nameParam);
+        navigate(`/detail/${name}`);
+      }
+    
     } catch (error) {
-      
-
-      if (error.response.data.error) {
+      if (error.response && error.response.data && error.response.data.error) {
         const errorData = error.response.data.error;
-        console.log(errorData);
-
+    
         setErrors({
           name: errorData.name ? errorData.name : null,
           phone: errorData.phone ? errorData.phone : null,
           email: errorData.email ? errorData.email : null,
           exist: errorData ? errorData : null,
         });
+      } else {
+        // Handle other types of errors, log or display them as needed
+        console.log("Error:", error);
       }
-    }
+    }    
   };
 
   return (
