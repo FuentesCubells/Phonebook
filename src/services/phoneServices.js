@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "https://phonebookback-production.up.railway.app/";
 
 const getAll = async () => {
   const request = axios.get(baseUrl);
@@ -11,7 +11,6 @@ const add = async (formData) => {
   const request = axios.post(baseUrl + "add", formData);
   return request.then((response) => response.data);
 };
-
 
 const edit = async (formData, id) => {
     
