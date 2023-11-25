@@ -12,8 +12,9 @@ import DetailView from "./components/detailview/DetailView";
 import Services from "./services/phoneServices";
 
 const App = () => {
-  
+
   const [persons, setPersons] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [reloadUsers, setReloadUsers] = useState(false);
 
@@ -86,7 +87,6 @@ const App = () => {
     </svg>
   );
   
-
   useEffect(() => {
     if (persons.length > 0) {
       setLoading(false);
@@ -113,14 +113,18 @@ const App = () => {
           return person;
         }
       });
-      setPersons(updatedPersons);
+      const sortedArray = updatedPersons.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+      
+      setPersons(sortedArray);
       setLoading(false);
-      setReloadUsers(false)
+      setReloadUsers(false);
+      console.log(sortedArray);
     }).catch((error) => {
       console.error('Error fetching data:', error);
       setLoading(false); // Ensure loading state is set to false on error as well
     });
   }, [reloadUsers]);
+
 
   if (loading) {
     return <p>Loading...</p>; // Or any loading component
@@ -134,22 +138,22 @@ const App = () => {
           <Route path='/' element={
             <>
               <AppHeader text={'List'}/>
-              <PhoneList persons={persons} />
+              <PhoneList setReloadUsers={setReloadUsers} persons={persons} />
             </>
           }/>
           <Route path='/add-contact' element={
             <>
               <AppHeader text={'Add'}/>
-              <Add Services={Services} setReloadUsers={setReloadUsers}persons={persons}/>
+              <Add Services={Services} setReloadUsers={setReloadUsers} persons={persons}/>
             </>
           }/>
           <Route path='/detail/:name' element={
             <>
               <AppHeader text={'Detail View'}/>
-              <DetailView Services={Services} persons={persons}/>
+              <DetailView Services={Services} setReloadUsers={setReloadUsers} persons={persons}/>
             </>
           }/>
-          <Route path='/edit-contact/:nameParam' element={
+          <Route path='/edit-contact/:id' element={
             <>
               <AppHeader text={'Edit'}/>
               <Add Services={Services} setReloadUsers={setReloadUsers} persons={persons}/>

@@ -1,30 +1,36 @@
 import React , { useState, useEffect }from "react";
-import { useParams } from 'react-router-dom';
+import { useParams,  useNavigate, useLocation } from 'react-router-dom';
 
-const DetailView = ({ Services,  persons}) => {
-  const { name } = useParams();
+const DetailView = ({ Services,  persons, setReloadUsers}) => {
+  
+  const navigate =  useNavigate();
+  const location = useLocation();
+  const id  = useParams();
   const [loading, setLoading] = useState(true);
+  
+  const person = Object.values(persons).find(obj => Object.values(obj).includes(id.name));
+  
 
- 
   useEffect(() => {
+    
     if (persons.length > 0) {
       setLoading(false);
     }
    
   }, [persons]);
 
-  const person = persons.filter(obj => Object.values(obj).includes(name));
-  console.log(person[0].image)
-
+  
   const handleDelete = async () => {
     try {
       const deleteData = new FormData();
-      deleteData.append('name', name);
+      deleteData.append('id', id.name);
 
-      let response = await Services.deleteContact(name, deleteData);
-      console.log(response);
+      let response = await Services.deleteContact(id.name, deleteData);
+      setReloadUsers(true);
+      navigate('/');
+
     } catch (error) {
-      console.log(error);
+      
     }
   }
 
@@ -35,20 +41,20 @@ const DetailView = ({ Services,  persons}) => {
   return (
     <div className="edit-container">
       <div className="edit-actions">
-        <button className="edit-action"><a href={`/edit-contact/${person[0].name}`}>Edit</a></button>
+        <button className="edit-action"><a href={`/edit-contact/${id.name}`}>Edit</a></button>
         <button className="edit-action"><a href={`#`} onClick={handleDelete}>Erase</a></button>
       </div>
       
       <div className="edit-content">
         <div className="content-title">
-          <img alt="portrait" src={person[0].image}/>
+          <img alt="portrait" src={person.image}/>
           <div className="content-info">
             <div className="icon">
-              {person[0].icon}
+              {person.icon}
             </div>
             <div className="content-name">
-              <h2>{person[0].name}</h2>
-              <h3>{person[0].role}</h3>
+              <h2>{person.name}</h2>
+              <h3>{person.role}</h3>
             </div>
           </div>
         </div>
@@ -56,22 +62,22 @@ const DetailView = ({ Services,  persons}) => {
         <div className="contact-info">
             <h3>City</h3>
             <div className="border-div"></div>
-              <p>{person[0].city}</p>
+              <p>{person.city}</p>
           </div>
         <div className="contact-info">
             <h3>Phone Number</h3>
             <div className="border-div"></div>
-              <p>{person[0].phone}</p>
+              <p>{person.phone}</p>
           </div>
           <div className="contact-info">
             <h3>Email</h3>
             <div className="border-div"></div>
-            <p>{person[0].email}</p>
+            <p>{person.email}</p>
           </div>
           <div className="contact-info">
             <h3>Works for</h3>
             <div className="border-div"></div>
-            <p>{person[0].company}</p>
+            <p>{person.company}</p>
           </div>
         </div>
       </div>

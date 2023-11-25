@@ -4,8 +4,9 @@ import { useParams,  useNavigate } from 'react-router-dom';
 const Add = ({ Services, persons, setReloadUsers }) => {
   const navigate =  useNavigate();
 
-  const { nameParam } = useParams();
-  const person = persons.filter(obj => Object.values(obj).includes(nameParam));
+  const {id} = useParams();
+  const person = persons.filter(obj => Object.values(obj).includes(id));
+  console.log(id)
 
   const [name, setName] = useState(person.length > 0 ? (person[0].name ? person[0].name : "") : "");
   const [phone, setPhone] = useState(person.length > 0 ? (person[0].phone ? person[0].phone : "") : "");
@@ -141,13 +142,27 @@ const Add = ({ Services, persons, setReloadUsers }) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("phone", phone);
-    formData.append("email", email);
-    formData.append("company", company);
-    formData.append("role", role);
-    formData.append("sector", sector);
-    formData.append("city", city);
+    
+    if( typeof id !== 'undefined' && id !== null ) {
+      formData.append("id", id);
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("company", company);
+      formData.append("role", role);
+      formData.append("sector", sector);
+      formData.append("city", city);
+
+    } else {
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("company", company);
+      formData.append("role", role);
+      formData.append("sector", sector);
+      formData.append("city", city);
+    }
+    
 
     if (photo) {
       formData.append("image", photo);
@@ -157,13 +172,22 @@ const Add = ({ Services, persons, setReloadUsers }) => {
     try {
       let response;
 
-      if (!nameParam) {
-        response = await Services.add(formData);
+      if (!id) {
+        const response = await Services.add(formData);
         setReloadUsers(true);
         navigate(`/#${name}`);
+
       } else {
-        response = await Services.edit(formData, nameParam);
-        navigate(`/detail/${name}`);
+
+        const response = await Services.edit(formData, id);
+        console.log(response);
+        if (response.message === "Contact updated successfully" ) {
+         
+          setReloadUsers(true);
+          navigate(`/detail/${id}`);
+        }
+      
+
       }
     
     } catch (error) {

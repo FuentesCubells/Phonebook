@@ -28,6 +28,16 @@ figure {
   align-self: stretch;
 }
 
+a{
+  text-decoration: none;
+  color: #5C5100;
+}
+a:hover {
+  text-decoration: none;
+  color: #dbc200;
+  background-color: #5C5100;
+}
+
 /*Header*/
 .header-container {
   width: 100%;
@@ -46,6 +56,28 @@ figure {
 }
 
 /*End Header*/
+
+/*search-bar*/
+.search-bar{
+  padding: 12px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+
+  border-radius: 12px;
+  border: 1px solid #5C5100;
+}
+.search-text {
+  background-color: transparent;
+  border: none;
+}
+.search-text:focus {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
 
 .app-header-container {
   padding: 12px 0px;
@@ -118,7 +150,9 @@ figure {
 .list-icon {
   width: 40px;
 }
-
+.list-container {
+  width: 100%;
+}
 /*Contact */
 
 .contact {
@@ -259,6 +293,7 @@ figure {
   gap: 12px;
   align-self: stretch;
 
+  cursor: pointer;
   border-radius: 12px;
   background: #463e02;
 }
@@ -346,10 +381,11 @@ input::file-selector-button {
   justify-content: space-between;
   align-items: flex-end;
   align-self: stretch;
+  gap: 24px;
 }
 .content-title img {
   width: 150px;
-  height: 150px;
+  height: 200px;
 
   display: flex;
   flex-direction: column;
@@ -367,24 +403,25 @@ input::file-selector-button {
   color: #463e02;
 
   font-family: Roboto Slab;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 400;
-}
-.content-name h3 {
-  height: 30px;
-  color: #463e02;
-
-  font-family: Roboto Slab;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
+  text-align: right;
+}
+.content-name h3 {
+  color: #463e02;
+
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: right;
 }
 .content-description {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 36px;
+  gap: 16px;
   flex: 1 0 0;
   align-self: stretch;
 }
@@ -479,3 +516,4 @@ input::file-selector-button {
   font-weight: 400;
 }
 /*End Footer*/
+

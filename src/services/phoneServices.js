@@ -13,15 +13,15 @@ const add = async (formData) => {
 };
 
 
-const edit = async (formData, nameParam) => {
-    const formattedName = encodeURIComponent(nameParam);
-    const request = await axios.put(baseUrl + `edit/${formattedName}`, formData);
+const edit = async (formData, id) => {
+    
+    const request = axios.put(baseUrl + `edit/${id}`, formData)
+    return request.then((response) => response.data);
 };
 
-const deleteContact = async (nameParam, deleteData) => {
+const deleteContact = async (id, deleteData) => {
   try {
-    const formattedName = encodeURIComponent(nameParam);
-    const response = await axios.delete(baseUrl + `delete/${formattedName}`, deleteData);
+    const response = await axios.delete(baseUrl + `delete/${id}`, deleteData);
 
     return response.data;
   } catch (error) {
