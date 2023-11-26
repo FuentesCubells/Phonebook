@@ -188,12 +188,14 @@ const Add = ({ Services, persons, setReloadUsers }) => {
         const errorData = error.response.data.error;
 
         if( error.response.data.error === 'Contacts validation failed: email: Path `email` is invalid (test@ gmail.com).') { 
+
           setErrors({
             name: errorData.name || null,
             phone: errorData.phone || null,
             email: 'Enter a valid email address',
           });
         }else {
+          
           setErrors({
             name: errorData.name || null,
             phone: errorData.phone || null,
