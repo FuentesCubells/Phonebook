@@ -6,10 +6,11 @@ const PhoneList = ({ persons }) => {
   const [fileterd, setFiltered] = useState(persons);
 
   const handleSearch = (event) => {
-
+    
     const filter = persons.filter((person) =>
       person.name.toLowerCase().includes( event.target.value.toLowerCase())
     );
+   
     setFiltered(filter);
     setValue(event.target.value);
     
@@ -17,7 +18,7 @@ const PhoneList = ({ persons }) => {
 
   useEffect(() => {
     setFiltered(persons)
-  });
+  }, [persons]);
   
   
   return (
