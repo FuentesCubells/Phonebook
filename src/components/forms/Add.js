@@ -192,8 +192,7 @@ const Add = ({ Services, persons, setReloadUsers }) => {
           phone: errorData.phone || null,
           email: errorData.email || null,
         });
-        
-        console.log(errors)
+      
         
       } else {
         setErrors({
