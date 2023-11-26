@@ -328,6 +328,9 @@ input::file-selector-button {
   border: none;
 }
 .submit-button {
+  width: 100%;
+  text-align: right;
+
   color: #f5e149;
   font-size: 20px;
   font-weight: 700;
@@ -347,12 +350,13 @@ input::file-selector-button {
   border-bottom: 1px solid #f54949;
 }
 .error-message p {
+  height: auto;
   color: #f54949;
 
   font-size: 16px;
   font-style: bold;
   font-weight: 700;
-  line-height: 0%; /* 0px */
+  
 }
 
 /*Detail-form */
