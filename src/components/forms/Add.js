@@ -183,7 +183,7 @@ const Add = ({ Services, persons, setReloadUsers }) => {
       navigate(`/#${name}`);
 
     } catch (error) {
-      
+      console.log(error);
       if (error.response && error.response.data && error.response.data.error ) {
         const errorData = error.response.data.error;
 
@@ -194,8 +194,9 @@ const Add = ({ Services, persons, setReloadUsers }) => {
             phone: errorData.phone || null,
             email: 'Enter a valid email address',
           });
-        }else {
           
+        }else {
+
           setErrors({
             name: errorData.name || null,
             phone: errorData.phone || null,
