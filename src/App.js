@@ -118,7 +118,7 @@ const App = () => {
       setPersons(sortedArray);
       setLoading(false);
       setReloadUsers(false);
-      console.log(sortedArray);
+
     }).catch((error) => {
       console.error('Error fetching data:', error);
       setLoading(false); // Ensure loading state is set to false on error as well

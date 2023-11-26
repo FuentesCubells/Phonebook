@@ -6,7 +6,6 @@ const Add = ({ Services, persons, setReloadUsers }) => {
 
   const {id} = useParams();
   const person = persons.filter(obj => Object.values(obj).includes(id));
-  console.log(id)
 
   const [name, setName] = useState(person.length > 0 ? (person[0].name ? person[0].name : "") : "");
   const [phone, setPhone] = useState(person.length > 0 ? (person[0].phone ? person[0].phone : "") : "");
@@ -24,6 +23,7 @@ const Add = ({ Services, persons, setReloadUsers }) => {
     phone: null,
     email: null,
     photo: null,
+    exist: null,
   });
   
   const services = (
@@ -166,46 +166,57 @@ const Add = ({ Services, persons, setReloadUsers }) => {
 
     if (photo) {
       formData.append("image", photo);
-      console.log(photo);
     }
 
+    if(!id) {
+        newContact(formData);
+    } else {
+      edit(formData, id);
+    } 
+  };
+
+  const newContact = async (formData) => {
+
     try {
-      let response;
+      const response = await Services.add(formData);
+      setReloadUsers(true);
+      navigate(`/#${name}`);
 
-      if (!id) {
-        const response = await Services.add(formData);
-        setReloadUsers(true);
-        navigate(`/#${name}`);
-
+    } catch (error) {
+      
+      if (error.response && error.response.data && error.response.data.error ) {
+        const errorData = error.response.data.error;
+        
+        setErrors({
+          name: errorData.name || null,
+          phone: errorData.phone || null,
+          email: errorData.email || null,
+        });
+        
+        console.log(errors)
+        
       } else {
+        setErrors({
+          exist: error.response.data.exist || null
+        });
+      }
+    }
+    return true;
+  }
 
+  const edit = async (formData, id) => {
+      try {
         const response = await Services.edit(formData, id);
-        console.log(response);
+   
         if (response.message === "Contact updated successfully" ) {
          
           setReloadUsers(true);
           navigate(`/detail/${id}`);
         }
-      
-
-      }
-    
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.error) {
+      } catch (error) {
         const errorData = error.response.data.error;
-    
-        setErrors({
-          name: errorData.name ? errorData.name : null,
-          phone: errorData.phone ? errorData.phone : null,
-          email: errorData.email ? errorData.email : null,
-          exist: errorData ? errorData : null,
-        });
-      } else {
-        // Handle other types of errors, log or display them as needed
-        console.log("Error:", error);
       }
-    }    
-  };
+  }
 
   return (
     <form className="form-container" onSubmit={handleSubmit}>
