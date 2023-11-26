@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const baseUrl = "https://phonebookback-production.up.railway.app/";
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "https://phonebookback-production.up.railway.app/";
+//const baseUrl = "http://localhost:3001/";
 
 const getAll = async () => {
   const request = axios.get(baseUrl);
