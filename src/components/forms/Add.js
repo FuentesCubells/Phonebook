@@ -195,7 +195,7 @@ const Add = ({ Services, persons, setReloadUsers }) => {
             email: 'Enter a valid email address',
           });
           
-        }else {
+        } else {
 
           setErrors({
             name: errorData.name || null,
