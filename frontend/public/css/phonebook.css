@@ -412,6 +412,7 @@ input::file-selector-button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  object-fit: cover;
 
   background-color: #5c5100;
 }
